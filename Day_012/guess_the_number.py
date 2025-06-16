@@ -32,5 +32,7 @@ difficulty = input("Choose a difficulty. Type 'easy' or 'hard': ").lower()
 
 if difficulty == 'easy':
     guess_number(EASY_MODE, chosen_number)
-else:
+elif difficulty == 'hard':
     guess_number(HARD_MODE, chosen_number)
+else:
+    print("Entered incorrect value.")
