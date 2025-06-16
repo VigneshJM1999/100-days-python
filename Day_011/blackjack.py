@@ -69,4 +69,5 @@ def blackjack():
     compare(user_score, computer_score)
 
 while input("Do you want to play BlackJack? Type 'y' or 'n': ").lower() == 'y':
+    print("\n" * 10)
     blackjack()
