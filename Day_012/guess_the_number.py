@@ -1,4 +1,5 @@
 import random
+from art import logo
 
 EASY_MODE = 10
 HARD_MODE = 5
@@ -22,9 +23,12 @@ def guess_number(lives, number):
 
 chosen_number = random.randint(1, 100)
 
+print(logo)
+
 print("Welcome to the Number Guessing Game!")
 print("I'm thinking of a number between 1 and 100.")
 difficulty = input("Choose a difficulty. Type 'easy' or 'hard': ").lower()
+
 
 if difficulty == 'easy':
     guess_number(EASY_MODE, chosen_number)
