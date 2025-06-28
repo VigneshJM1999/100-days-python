@@ -25,7 +25,7 @@ while is_race_on:
             winner = turtle.pencolor()
             is_race_on = False
             if user_choice == winner:
-                print(f"🎉 You gave won the bet! {winner.capitalize()} is the winning color!")
+                print(f"🎉 You have won the bet! {winner.capitalize()} is the winning color!")
             else:
                 print(f"😭 You have lost the bet! {winner.capitalize()} is the winning color!")
         else:
