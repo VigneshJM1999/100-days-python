@@ -32,8 +32,8 @@ def check_stock_price():
     stock_data = list(stock_price_response.json()["Time Series (Daily)"].items())[:2]
     stock_difference = round((float(stock_data[0][1]["4. close"]) - float(stock_data[1][1]["4. close"])) / float(stock_data[1][1]["4. close"]) * 100, 2)
     direction = UP if stock_difference > 0 else DOWN
-    news = get_news()
     if abs(stock_difference) > 5:
+        news = get_news()
         send_message(direction, abs(stock_difference), news)
 
 def get_news():
