@@ -5,6 +5,7 @@ from time import sleep, time
 
 chrome_options = webdriver.ChromeOptions()
 chrome_options.add_experimental_option("detach", True)
+chrome_options.add_argument("--start-maximized")
 driver = webdriver.Chrome(options=chrome_options)
 
 driver.get("https://ozh.github.io/cookieclicker/")
