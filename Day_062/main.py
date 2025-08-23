@@ -52,7 +52,6 @@ def home():
 def add_cafe():
     form = CafeForm()
     if form.validate_on_submit():
-        print("True")
     # Exercise:
     # Make the form write a new row into cafe-data.csv
     # with   if form.validate_on_submit()
