@@ -19,16 +19,13 @@ This will install the packages from requirements.txt for this project.
 
 app = Flask(__name__)
 
-# CREATE DB
 class Base(DeclarativeBase):
     pass
-# Connect to Database
+
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///cafes.db'
 db = SQLAlchemy(model_class=Base)
 db.init_app(app)
 
-
-# Cafe TABLE Configuration
 class Cafe(db.Model):
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
     name: Mapped[str] = mapped_column(String(250), unique=True, nullable=False)
@@ -124,18 +121,6 @@ def delete_cafe(cafe_id):
     db.session.commit()
 
     return jsonify(response={"success": "Successfully deleted the cafe."}), 200
-
-
-if __name__ == '__main__':
-    app.run(debug=True)
-
-# HTTP GET - Read Record
-
-# HTTP POST - Create Record
-
-# HTTP PUT/PATCH - Update Record
-
-# HTTP DELETE - Delete Record
 
 
 if __name__ == '__main__':
