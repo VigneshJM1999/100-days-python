@@ -1,0 +1,123 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+
+  <header class="mb-auto">
+    <div class="d-flex flex-wrap align-items-center justify-content-between">
+      <h3 class="fw-bold mb-0">🚀 Vignesh J M</h3>
+      <nav class="nav nav-masthead">
+        <a class="nav-link active" href="#">Home</a>
+        <a class="nav-link" href="#skills">Skills</a>
+        <a class="nav-link" href="#projects">Projects</a>
+        <a class="nav-link" href="#experience">Experience</a>
+        <a class="nav-link" href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="px-3 my-auto text-center">
+    <h1 class="fw-bold display-4">Full-Stack Developer in Transition</h1>
+    <p class="lead mt-3">
+      I design and build <span class="text-warning fw-semibold">scalable web apps</span>
+      with <b>Python, Django, React</b>, and deploy on <b>AWS</b> & <b>Azure</b>.
+    </p>
+    <div class="mt-4 d-flex gap-3 justify-content-center">
+      <a href="{{ url_for('static', filename='visionary-asblwmja.pdf') }}"
+         class="btn btn-lg btn-warning fw-bold shadow rounded-pill px-4" target="_blank">
+         📄 Resume
+      </a>
+      <a href="#contact" class="btn btn-lg btn-outline-light fw-bold shadow rounded-pill px-4">
+        ✉️ Contact Me
+      </a>
+    </div>
+  </main>
+
+  <hr class="border-light my-5">
+
+  <section id="skills" class="text-start my-5">
+    <h2 class="fw-bold text-uppercase mb-4">⚡ Skills</h2>
+    <div class="row g-4">
+      <div class="col-md-6">
+        <div class="p-4 bg-dark rounded-3 shadow-sm">
+          <h5 class="fw-semibold text-warning">Languages & Frameworks</h5>
+          <p>Python · JavaScript · Django · React · Node.js</p>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="p-4 bg-dark rounded-3 shadow-sm">
+          <h5 class="fw-semibold text-warning">Cloud & Tools</h5>
+          <p>AWS · Azure · SQL · CSS · Selenium · Git</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-4 p-4 bg-dark rounded-3 shadow-sm">
+      <h5 class="fw-semibold text-warning">Certifications</h5>
+      <ul class="mb-0">
+        <li>AWS Essentials (2024)</li>
+        <li>Selenium WebDriver with Python (2024)</li>
+        <li>Machine Learning – Verzeo (2020)</li>
+        <li>AZ-204: Developing Solutions for Azure (2025)</li>
+      </ul>
+    </div>
+  </section>
+
+  <hr class="border-light my-5">
+
+  <section id="projects" class="text-start my-5">
+    <h2 class="fw-bold text-uppercase mb-4">💻 Projects</h2>
+    <div class="row g-4">
+      <div class="col-md-6">
+        <div class="card bg-dark text-white shadow h-100 border-0 rounded-3">
+          <div class="card-body">
+            <h5 class="card-title text-warning fw-bold">Django Blog</h5>
+            <p class="card-text">A blog platform with user authentication, CRUD operations, and a modern Bootstrap UI.</p>
+            <a href="https://github.com/VigneshJM1999" class="btn btn-outline-warning btn-sm" target="_blank">🔗 View Repo</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card bg-dark text-white shadow h-100 border-0 rounded-3">
+          <div class="card-body">
+            <h5 class="card-title text-warning fw-bold">React Dashboard</h5>
+            <p class="card-text">Interactive analytics dashboard with API integration and dynamic chart rendering.</p>
+            <a href="https://github.com/VigneshJM1999" class="btn btn-outline-warning btn-sm" target="_blank">🔗 View Repo</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="border-light my-5">
+
+  <section id="experience" class="text-start my-5">
+    <h2 class="fw-bold text-uppercase mb-4">🧑‍💻 Experience</h2>
+    <div class="p-4 bg-dark rounded-3 shadow-sm mb-3">
+      <h5 class="fw-semibold">Tata Consultancy Services (2021–Present)</h5>
+      <p>Systems Engineer — contributing to automation and scalable application development within global teams.</p>
+    </div>
+    <div class="p-4 bg-dark rounded-3 shadow-sm">
+      <h5 class="fw-semibold">Internships</h5>
+      <p>Machine Learning Research (TACTII, 2020) · Verzeo ML Intern (2020) · Caliper Engg. Intern (2019)</p>
+    </div>
+  </section>
+
+  <hr class="border-light my-5">
+
+  <section id="contact" class="text-start my-5">
+    <h2 class="fw-bold text-uppercase mb-4">📬 Contact</h2>
+    <div class="p-4 bg-dark rounded-3 shadow-sm">
+      <ul class="list-unstyled mb-0">
+        <li>📧 <a href="test@gmail.com" class="text-white">vignesh.nehru2@outlook.com</a></li>
+        <li>🔗 <a href="test" target="_blank" class="text-white">LinkedIn</a></li>
+        <li>💻 <a href="https://github.com/test" target="_blank" class="text-white">GitHub</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <footer class="mt-auto text-white-50 py-3">
+    <p>Made with ❤️ using Flask & Bootstrap · © {{ 2025 }}</p>
+  </footer>
+</div>
+{% endblock %}

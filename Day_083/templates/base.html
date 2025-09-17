@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en" class="h-100" data-bs-theme="light">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}Vignesh J M - Portfolio{% endblock %}</title>
+
+    {{ bootstrap.load_css() }}
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/cover.css') }}">
+
+    <style>
+      .nav-masthead .nav-link { color: rgba(255,255,255,0.6); }
+      .nav-masthead .nav-link.active,
+      .nav-masthead .nav-link:hover { color: #fff; }
+      .cover-container { max-width: 42rem; }
+    </style>
+  </head>
+  <body class="d-flex h-100 text-center text-bg-dark">
+    {% block content %}{% endblock %}
+    {{ bootstrap.load_js() }}
+  </body>
+</html>
