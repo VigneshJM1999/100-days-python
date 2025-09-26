@@ -1,0 +1,43 @@
+{% include "header.html" %}
+
+<div class="album py-5 bg-body-tertiary">
+  <div class="container">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+      {% for cafe in cafes %}
+        <div class="col">
+          <div class="card shadow-sm">
+            <img
+              src="{{ cafe.img_url }}"
+              class="bd-placeholder-img card-img-top"
+              alt="{{ cafe.name }}"
+              width="100%"
+              height="225"
+              style="object-fit: cover;"
+            >
+
+            <div class="card-body">
+              <h5 class="card-title">{{ cafe.name }}</h5>
+              <p class="card-text">
+                Location: {{ cafe.location }} <br>
+                Seats: {{ cafe.seats }} <br>
+                Coffee Price: {{ cafe.coffee_price or 'N/A' }}
+              </p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <a href="{{ cafe.map_url }}" target="_blank" class="btn btn-sm btn-outline-secondary">
+                    Show on Map
+                  </a>
+                  <a href="{{ url_for('show_cafe', cafe_id=cafe.id) }}" class="btn btn-sm btn-outline-secondary">
+                    View Cafe
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% include "footer.html" %}

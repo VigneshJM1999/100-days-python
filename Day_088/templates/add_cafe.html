@@ -1,0 +1,25 @@
+{% include "header.html" %}
+
+{% block content %}
+<div class="container mt-4">
+  <h2>Add a New Cafe</h2>
+  <form method="POST" action="{{ url_for('add_cafe') }}">
+    {{ form.hidden_tag() }}
+    <div class="mb-3">{{ form.name.label }} {{ form.name(class="form-control") }}</div>
+    <div class="mb-3">{{ form.map_url.label }} {{ form.map_url(class="form-control") }}</div>
+    <div class="mb-3">{{ form.img_url.label }} {{ form.img_url(class="form-control") }}</div>
+    <div class="mb-3">{{ form.location.label }} {{ form.location(class="form-control") }}</div>
+    <div class="mb-3">{{ form.seats.label }} {{ form.seats(class="form-control") }}</div>
+
+    <div class="form-check">{{ form.has_sockets() }} {{ form.has_sockets.label }}</div>
+    <div class="form-check">{{ form.has_toilet() }} {{ form.has_toilet.label }}</div>
+    <div class="form-check">{{ form.has_wifi() }} {{ form.has_wifi.label }}</div>
+    <div class="form-check">{{ form.can_take_calls() }} {{ form.can_take_calls.label }}</div>
+
+    <div class="mb-3">{{ form.coffee_price.label }} {{ form.coffee_price(class="form-control") }}</div>
+
+    {{ form.submit(class="btn btn-primary") }}
+  </form>
+</div>
+{% endblock %}
+{% extends "footer.html" %}

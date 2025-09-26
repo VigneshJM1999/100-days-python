@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Cafe Website</title>
+  {% block styles %}
+    {{ bootstrap.load_css() }}
+  {% endblock %}
+</head>
+<body>
+  <header class="p-3 text-bg-dark">
+    <div class="container">
+      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+
+        <a href="{{ url_for('home') }}" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+          <span class="fs-4 fw-bold">☕ CafeFinder</span>
+        </a>
+
+        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0 ms-3">
+          <li><a href="{{ url_for('home') }}" class="nav-link px-2 text-secondary">Home</a></li>
+        </ul>
+
+        <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search" action="{{ url_for('search_for_cafe') }}" method="post">
+          <input
+            type="search"
+            class="form-control text-bg-dark"
+            placeholder="Search By Location"
+            aria-label="Search"
+            name="location">
+        </form>
+
+        <div class="text-end">
+          <a href="{{ url_for('add_cafe') }}" class="btn btn-outline-light me-2">Add</a>
+        </div>
+      </div>
+    </div>
+  </header>
+</body>
+</html>

@@ -1,0 +1,27 @@
+{% include "header.html" %}
+{% block title %}<h1 align="center">{{ cafe.name }}</h1>{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+  <div class="card shadow-lg">
+    <img src="{{ cafe.img_url }}" class="card-img-top" alt="{{ cafe.name }}" style="height: 300px; object-fit: cover;">
+    <div class="card-body">
+      <h3 class="card-title">{{ cafe.name }}</h3>
+      <p class="card-text">
+        📍 Location: {{ cafe.location }} <br>
+        ☕ Coffee Price: {{ cafe.coffee_price or "N/A" }} <br>
+        💺 Seats: {{ cafe.seats }}
+      </p>
+      <ul class="list-unstyled">
+        <li>🔌 Sockets: {{ "Yes" if cafe.has_sockets else "No" }}</li>
+        <li>🚻 Toilet: {{ "Yes" if cafe.has_toilet else "No" }}</li>
+        <li>📶 Wifi: {{ "Yes" if cafe.has_wifi else "No" }}</li>
+        <li>📞 Calls: {{ "Yes" if cafe.can_take_calls else "No" }}</li>
+      </ul>
+      <a href="{{ cafe.map_url }}" target="_blank" class="btn btn-primary">View on Map</a>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% extends "footer.html" %}
