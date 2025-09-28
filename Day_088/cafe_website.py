@@ -43,9 +43,12 @@ with app.app_context():
 
 @app.route("/")
 def home():
-    result = db.session.execute(db.select(Cafe))
-    all_cafes = result.scalars().all()
-    return render_template("index.html", cafes=all_cafes)
+    page = request.args.get('page', 1, type=int)
+    per_page = 9
+    cafe_pagination = Cafe.query.paginate(page=page, per_page=per_page, error_out=False)
+    all_cafes = cafe_pagination.items
+    # all_cafes = result.scalars().all()
+    return render_template("index.html", cafes=all_cafes, pagination=cafe_pagination)
 
 
 @app.route("/search", methods=['POST'])
@@ -55,7 +58,7 @@ def search_for_cafe():
         return jsonify(error={"Bad Request": "Missing 'location' parameter."}), 400
 
     result = db.session.execute(
-        db.select(Cafe).where(Cafe.location == query_location.capitalize())
+        db.select(Cafe).where(Cafe.location == query_location.title())
     )
     location_cafes = result.scalars().all()
 
@@ -83,7 +86,7 @@ def add_cafe():
         )
         db.session.add(new_cafe)
         db.session.commit()
-        return jsonify(response={"success": "Successfully added the new cafe."})
+        return render_template("success.html", message="Successfully added the Cafe")
     return render_template("add_cafe.html", form=form)
 
 
