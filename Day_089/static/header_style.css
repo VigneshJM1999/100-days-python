@@ -1,0 +1,13 @@
+header {
+    position: relative;
+    z-index: 101;
+    padding: 10px 40px;
+    background: linear-gradient(#a648c4, #7930a7);
+    background-image: url("/assets/noise.png"), linear-gradient(#a648c4, #7930a7);
+    background-size: 50px 50px, auto;
+    box-shadow:
+        inset 0 -1px 0 rgba(0, 0, 0, 0.4),
+        0 1px 3px rgba(0, 0, 0, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    color: #fff; /* ensure text contrasts well */
+}

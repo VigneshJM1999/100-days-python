@@ -1,10 +1,77 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends "base.html" %}
+
+{% block title %}Tasks - My To-Do List{% endblock %}
+
+{% block content %}
+<div class="card" id="list1" style="border-radius: .75rem; background-color: #eff1f2;">
+  <div class="card-body py-4 px-4 px-md-5">
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+
+    <div class="pb-2">
+      <div class="card">
+        <div class="card-body">
+          <form action="{{ url_for('add_task') }}" method="POST" class="d-flex flex-row align-items-center">
+            <input type="text" name="task" class="form-control form-control-lg" placeholder="Add new..." required>
+            <input type="date" name="date" class="form-control ms-2" value="{{ now.strftime('%Y-%m-%d') }}">
+            <button type="submit" class="btn btn-primary ms-3">Add</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <hr class="my-4">
+
+    {% for task in tasks %}
+    <ul class="list-group list-group-horizontal rounded-0 mb-2">
+      <li class="list-group-item d-flex align-items-center ps-0 pe-3 py-1 rounded-0 border-0 bg-transparent">
+        <form action="{{ url_for('update_status', task_id=task.id) }}" method="POST" onchange="this.submit()">
+            <div class="form-check">
+              <input class="form-check-input me-0" type="checkbox" name="task_done" {% if task.task_done %}checked{% endif %}>
+            </div>
+        </form>
+      </li>
+
+      <li class="list-group-item px-3 py-1 d-flex align-items-center flex-grow-1 border-0 bg-transparent">
+        <p class="lead fw-normal mb-0 {% if task.task_done %}text-decoration-line-through text-muted{% endif %}">
+          {{ task.task }}
+        </p>
+      </li>
+
+      <li class="list-group-item ps-3 pe-0 py-1 rounded-0 border-0 bg-transparent">
+        <div class="text-end text-muted">
+          <p class="small mb-0">
+            <i class="fas fa-info-circle me-2"></i>
+            {{ task.date.strftime("%d %b %Y") }}
+          </p>
+        </div>
+      </li>
+
+      <li class="list-group-item ps-3 pe-0 py-1 rounded-0 border-0 bg-transparent">
+        <div class="d-flex flex-row justify-content-end mb-1">
+          <a href="{{ url_for('edit_task', task_id=task.id) }}" class="text-info" title="Edit Task">
+            <i class="fas fa-pencil-alt me-3">🖋️</i>
+          </a>
+          <form action="{{ url_for('delete_task', task_id=task.id) }}" method="POST">
+            <button type="submit" class="text-danger" title="Delete Task" style="border: none; background: none; padding: 0; cursor: pointer;">
+              <i class="fas fa-trash-alt">❌</i>
+            </button>
+          </form>
+        </div>
+      </li>
+    </ul>
+    {% else %}
+      <p class="text-center text-muted">No tasks yet. Add one above!</p>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}
