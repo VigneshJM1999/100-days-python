@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Color Results</title>
+<style>
+body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;max-width:1000px;margin:30px auto;padding:0 20px}
+.row{display:flex;gap:20px;align-items:flex-start}
+.left{flex:1}
+.right{width:360px}
+.palette{display:flex;flex-direction:column;gap:8px;margin-top:8px}
+.swatchRow{display:flex;gap:8px}
+.swatch{flex:1;min-width:0;border-radius:6px;padding:14px;color:#111;font-weight:600;text-align:center}
+.swatch small{display:block;font-size:12px;font-weight:500;margin-top:8px;color:rgba(0,0,0,0.6)}
+img.uploaded{max-width:100%;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,0.08)}
+.meta{margin-top:12px;color:#555}
+a.button{display:inline-block;margin-top:12px;padding:8px 12px;border-radius:8px;background:#eee;text-decoration:none;color:#222}
+</style>
+</head>
+<body>
+<h1>Extracted Colors</h1>
+<div class="row">
+<div class="left">
+<img class="uploaded" src="data:image/{{img_format}};base64,{{img_b64}}" alt="Uploaded image">
+<div class="meta">Original size: {{orig_w}} × {{orig_h}} — analyzed pixels: {{pixel_count}}</div>
+<a class="button" href="/">Analyze another image</a>
+</div>
+<div class="right">
+<h3>Top {{colors|length}} colors</h3>
+<div class="palette">
+{% for c in colors %}
+<div style="background:{{c.hex}};" class="swatch">
+{{c.hex}}<small>{{c.percent}}% — {{c.count}} px</small>
+</div>
+{% endfor %}
+</div>
+</div>
+</div>
+</body>
+</html>
